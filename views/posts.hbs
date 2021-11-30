@@ -1,0 +1,49 @@
+{{> sidebar}}
+<!-- Page Content -->
+<div class="col-9">
+    <!-- Blog Post -->
+{{#if posts.length}}
+    {{#each posts}}
+        {{#if isPublished}}
+                <div class="card mb-4" data-id="{{ id }}">
+                    <div class="card-body">
+                        <div class="card-info">
+                            <div class="profile-img">V</div>
+                            <a class="username" href="/profile/{{user.id}}"> {{user.name}} </a>
+                            <time class="post-time"> {{dateFormat updatedAt "dddd, MMMM Do YYYY, h:mm:ss a"}} </time>
+                        </div>
+                        <img class="post-image" src="img/image.jpg" alt="">
+                        <a href="/posts/{{id}}" class="card-title">{{title}}</a>
+                        <div class="card-text">
+                            {{{content}}}
+                        </div>
+                        <a href="/posts/{{id}}">More</a>
+                        <ul class="card-links">
+                            <li class="add-favorite">
+                                <img class="add-like" src="img/heart-line.svg" alt="">
+                                <span class="like-count">0</span>
+                            </li>
+                            <li class="add-comment">
+                                <img src="img/chat-1-line.svg" alt="">
+                                <span class="comment-count">0</span>
+                            </li>
+                            <li class="save-post">
+                                <img src="img/bookmark-line.svg" alt="" id="add_favorite">
+                                <span class="bookmark-count">0</span>
+                            </li>
+                        </ul>
+                        <hr/>
+                    </div>
+                </div>
+        {{/if}}
+    {{/each}}
+    <button class="button_more">
+        Load more
+    </button>
+    </div>
+{{else}}
+    <div class="empty-posts">
+        <p class="write-post">Have something to share?</p>
+        <button class="btn-purple" id="write-post" style="width: 206px;height: 56px;">Write your first story</button>
+    </div>
+{{/if}}
